@@ -1,0 +1,24 @@
+form {
+    display: table;
+    overflow: scroll;
+}
+
+table {
+    margin: auto;
+    border: solid black;
+    padding: 5px;
+    border-collapse: collapse;
+}
+
+tr {
+    height: 50px;
+}
+
+td {
+    width: auto;
+    border: solid black;
+}
+
+.submit {
+    text-align: center;
+}
