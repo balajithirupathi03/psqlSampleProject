@@ -1,12 +1,12 @@
 <?php
 
-class xController
+class userController
 {
     use Render;
     
     public function __construct()
     {
-        $this->userModel = new XModel();
+        $this->userModel = new UserModel();
         $this->post = $_POST;
     }
 

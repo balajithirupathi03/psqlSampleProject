@@ -4,7 +4,7 @@
 require_once 'Core/Sesstion.php';
 require_once 'Config/UploadFilePathConfig.php';
 
-class XModel extends DataBaseAccessor
+class UserModel extends DataBaseAccessor
 {
     public function getSchemaList()
     {

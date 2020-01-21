@@ -28,7 +28,7 @@
                 <td colspan = 2 ><input type = "submit" name = "userLoginSubmition" value = "Login"></td>
             </tr>
             <tr>
-                <td colspan = 2 >New user? Signup <a class = 'link' onclick = "location.href = 'index.php/X/createAccount'" >here. </a></td>
+                <td colspan = 2 >New user? Signup <a class = 'link' onclick = "location.href = 'index.php/User/createAccount'" >here. </a></td>
             </tr>
             <!-- <tr>
                 <td colspan = 2 ><input type = "button" onclick = "location.href = 'recoverForgotPassword'" value = "Forgot Password"></td>

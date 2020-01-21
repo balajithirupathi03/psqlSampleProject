@@ -5,9 +5,10 @@ if (isset($_SERVER['PATH_INFO'])) {
     $path = $_SERVER['PATH_INFO'];
     $splittedPath = explode('/', ltrim($path), 4);
     $controller = ucfirst($splittedPath[1]);
-    $method = isset($splittedPath[2]) ? $splittedPath[2] : exit('----Page Not Found----');
+    $method = isset($splittedPath[2]) ? $splittedPath[2] : exit('----Page No000000t Found----');
     $parameters = explode('/', ltrim($splittedPath[3]));
     $requiredFile = __DIR__ . '/Controller/' . $controller . 'Controller.php';
+    //echo $requiredFile;exit;
     if (file_exists($requiredFile)) {
         $controllerClass = $controller . 'Controller';
         $controllerObject = new $controllerClass();
@@ -16,7 +17,7 @@ if (isset($_SERVER['PATH_INFO'])) {
         exit('----Page Not Found----');
     }
 } else {
-    $controllerClass = 'XController';
+    $controllerClass = 'UserController';
     $controllerObject = new $controllerClass();
     $controllerObject->login();
 }
