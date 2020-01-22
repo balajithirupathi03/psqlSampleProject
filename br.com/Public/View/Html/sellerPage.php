@@ -8,15 +8,17 @@
 <?php
 
 while ($row = pg_fetch_assoc($message)) {
-    echo '<form><table> 
+    echo '
     <form method = "post">
-    Productid = <input type = "text" name = "productid" readonly value="'.$row['productid'].'"><br>
-    Productname = <input type = "text" name = "productname" readonly value="'.$row['productname'].'"><br>
-    Price = <input type = "text" name = "price" readonly value="'.$row['price'].'"><br>
-    Productcount = <input type = "text" name = "productcount" readonly value="'.$row['productcount'].'"><br>
-    Sellerid =  <input type = "text" name = "sellerid" readonly value="'.$row['sellerid'].'"><br><br><br>
-    <form> 
-    </table> </from>';
+    <table> 
+    <tr><td>Productid </td><td> : <input type = "text" name = "productid" readonly value="'.$row['productid'].'"></td></tr>
+    <tr><td>Productname </td><td> : <input type = "text" name = "productname" readonly value="'.$row['productname'].'"></td></tr>
+    <tr><td>Price </td><td> : <input type = "text" name = "price" readonly value="'.$row['price'].'"></td></tr>
+    <tr><td>Productcount </td><td> : <input type = "text" name = "productcount" readonly value="'.$row['productcount'].'"><br>
+    <input type = "hidden" name = "sellerid" readonly value="'.$row['sellerid'].'">
+    </table>
+    </form> 
+    <br>';
   }
 ?>
  
