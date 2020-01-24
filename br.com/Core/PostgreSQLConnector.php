@@ -1,8 +1,8 @@
 <?php
 
-require_once 'Config/MysqlConnectionConfig.php';
+require_once 'Config/PostgreSQLConnectionConfig.php';
 
-class MysqlConnector
+class PostgreSQLConnector
 {
     public function getConnection()
     {

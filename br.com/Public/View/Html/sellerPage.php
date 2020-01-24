@@ -6,7 +6,6 @@
 <h1>Seller Page</h1>
 <a href="index.php/User/addProduct/">Sell a New Product</a><br><br>
 <?php
-
 while ($row = pg_fetch_assoc($message)) {
     echo '
     <form method = "post">
@@ -21,7 +20,6 @@ while ($row = pg_fetch_assoc($message)) {
     <br>';
   }
 ?>
- 
 </body>
 </html>
 

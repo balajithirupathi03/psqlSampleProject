@@ -1,6 +1,6 @@
 <?php
 
-class DataBaseAccessor extends MysqlConnector implements DataBaseInterface
+class DataBaseAccessor extends PostgreSQLConnector implements DataBaseInterface
 {
     private static $conn;
 

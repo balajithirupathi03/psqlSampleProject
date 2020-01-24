@@ -1,6 +1,5 @@
 <html>
 <head>
-<link rel = "stylesheet" href = "../../Public/View/Css/UserRegisterationForm.css" type = "text/css">
 <script src = "../Public/View/JavaScript/UserRegisterationForm.js"></script>
 </head>
 <h1>User Registration Form</h1>
