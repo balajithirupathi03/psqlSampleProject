@@ -10,7 +10,6 @@ class PostgreSQLConnector
         if (!$db_connection) {
             die('Could not connect: ' . pg_last_error($db_connection));exit;
         }
-        //echo 'success';
         return $db_connection;
     }
 }

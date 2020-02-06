@@ -1,10 +1,10 @@
 <html>
 <head>
-<script src = "../Public/View/JavaScript/UserRegisterationForm.js"></script>
+<script src = "../Public/View/JavaScript/userJS.js"></script>
 </head>
 <h1>User Registration Form</h1>
 <body>
-    <form method = "post">
+    <form method = "post" name ='accountCreateForm' onsubmit="createAccount(event);return false;">
     <table>
     <tr><td>Name</td><td> : <input type = "text" name = "name" pattern = "^[A-Za-z]*\s*[A-Za-z]*$" placeholder = "Enter your Name" required></td></tr>
     <tr><td>Gender</td><td><input type="radio" name="gender" value="m" checked> Male

@@ -1,6 +1,5 @@
 <?php
-//echo 'create table india.details (UserId var,Name varchar,Gender varchar(1),MailId varchar,ContactNumber longint,Products array,Category varchar(1),Passsword varchar)';
-//echo 'create table india.productdeatails (productid int serial primarykey,productname varchar,price int,productcount int,sellerid int)';
+
 require_once 'Core/Sesstion.php';
 require_once 'Config/UploadFilePathConfig.php';
 
@@ -22,7 +21,7 @@ class UserModel extends DataBaseAccessor
     public function insertDetails($formValues)
     {
         unset($formValues['CreateAccount']);
-        $tableName = $formValues['country'] . '.' . 'userdetails';
+        $tableName = '"'.$formValues['country'].'"' . '.' . 'userdetails';
         unset($formValues['country']);
         $formValues['passsword'] = hash('sha256', $formValues['passsword'] . 'blaze2rage.com');
         $feilds = array_keys($formValues);
@@ -37,9 +36,16 @@ class UserModel extends DataBaseAccessor
         $tableName = '.userdetails';
         $whereFeild = 'mailid';
         $whereValue = '\'' . $LoginMailId . '\'';
-        $schemaList = $this->getSchemaList();
+        $_SESSION['countryCode']=substr($_SERVER['HTTP_HOST'],5);
+
+        if ($_SESSION['countryCode'] === 'com') {
+            $schemaList = $this->getSchemaList();
+        }
+        else {
+            $schemaList[]=['schema'=> $_SESSION['countryCode']];
+        }
         foreach ($schemaList as $schema) {
-            $psqlData = $this->selectUsingCondition($feilds, $schema['schema'] . $tableName, $whereFeild, $whereValue);
+            $psqlData = $this->selectUsingCondition($feilds, '"'.$schema['schema'].'"'. $tableName, $whereFeild, $whereValue);
             $tableDatas = pg_num_rows($psqlData);
             $userDeata = pg_fetch_array($psqlData);
             if ($tableDatas > 0) {
@@ -57,10 +63,10 @@ class UserModel extends DataBaseAccessor
         $_SESSION["schema"] = $userId['schema'];
     }
 
-    public function getSellePageData()
+    public function getSellerPageData()
     {
         $fields = ['*'];
-        $tableName = $_SESSION['schema'] . '.' . 'productdeatails';
+        $tableName = '"'.$_SESSION['schema'].'"' . '.' . 'productdeatails';
         $whereFeild = 'sellerid';
         $whereValue = $_SESSION['userid'];
         return $this->selectUsingCondition($fields, $tableName, $whereFeild, $whereValue);
@@ -69,15 +75,15 @@ class UserModel extends DataBaseAccessor
     public function getBuyerPageData()
     {
         $fields = ['*'];
-        $tableName = $_SESSION['schema'] . '.' . 'productdeatails';
+        $tableName = '"'.$_SESSION['schema'].'"'.'.' . 'productdeatails';
         return $this->select($fields, $tableName);
     }
 
     public function insertSellingFormData($formData)
     {
         unset($formData['SellProduct']);
-        unset($formData['productid']);
-        $tableName = $_SESSION['schema'] . '.' . 'productdeatails';
+        $formData['sellerid']=$_SESSION['userid'];
+        $tableName = '"'.$_SESSION['schema'].'"'. '.' . 'productdeatails';
         $feilds = array_keys($formData);
         $values = array_values($formData);
         $this->insert($tableName, $feilds, $values);
