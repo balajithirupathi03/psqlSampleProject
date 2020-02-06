@@ -11,26 +11,27 @@ class DataBaseAccessor extends PostgreSQLConnector implements DataBaseInterface
 
     private function excecuteQueryStatement($preparedStatement)
     {
-        return pg_query($this->conn,$preparedStatement);
+        return pg_query($this->conn, $preparedStatement);
     }
 
     final public function select($fields, $tableName)
     {
         $fields = implode(",", $fields);
-        $query="SELECT $fields FROM $tableName";
+        $query = "SELECT $fields FROM $tableName";
         return $this->excecuteQueryStatement($query);
     }
 
     final public function selectUsingCondition($fields, $tableName, $whereFiled, $whereValue)
     {
         $fields = implode(",", $fields);
-        $query= "SELECT $fields FROM $tableName WHERE $whereFiled = $whereValue";
+        $query = "SELECT $fields FROM $tableName WHERE $whereFiled = $whereValue";
         return $this->excecuteQueryStatement($query);
     }
 
-    final public function selectByJoin($fields, $tableNameOne, $tableNameTwo, $onCondition){
+    final public function selectByJoin($fields, $tableNameOne, $tableNameTwo, $onCondition)
+    {
         $fields = implode(",", $fields);
-        $query="select $fields from $tableNameOne join $tableNameTwo on $onCondition";
+        $query = "select $fields from $tableNameOne join $tableNameTwo on $onCondition";
         return $this->excecuteQueryStatement($query);
     }
 
@@ -38,8 +39,8 @@ class DataBaseAccessor extends PostgreSQLConnector implements DataBaseInterface
     {
         $fields = implode(",", $fields);
         $values = "'" . implode("', '", $vallues) . "'";
-        $query="INSERT INTO $tableName($fields) VALUES ($values)";
-        pg_query($this->conn,$query);
+        $query = "INSERT INTO $tableName($fields) VALUES ($values)";
+        pg_query($this->conn, $query);
     }
 
     final public function __destruct()

@@ -8,7 +8,7 @@ function login() {
         if (xhttp.readyState === 4) {
             responceArray = jsonDecode(this.responseText);
             if (responceArray['status']['status code'] === 200) {
-                window.location = "/user/home";
+                window.location = "/user/viewHomePage";
             } else {
                 document.getElementById('errorMessage').innerHTML = responceArray['status']['message'];
                 console.log('The entered Data\'s not found');
@@ -23,7 +23,7 @@ function jsonDecode(response) {
 
 function getData() {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "/user/home/products", true);
+    xhttp.open("GET", "../api/products", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send();
     xhttp.onreadystatechange = function() {
@@ -87,14 +87,14 @@ function createProtectTable(fieldName, fieldValue) {
 function sellProduct() {
     var xhttp = new XMLHttpRequest();
     const formDatas = new URLSearchParams(new FormData(productSellForm)).toString();
-    xhttp.open("POST", "/user/product", true);
+    xhttp.open("POST", "../api/product", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(formDatas);
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState === 4) {
             responceArray = jsonDecode(this.responseText);
             if (responceArray['status']['status code'] === 201) {
-                window.location = "/user/home";
+                window.location = "/user/viewHomePage";
             } else {
                 document.getElementById('errorMessage').innerHTML = responceArray['status']['message'];
                 console.log('The entered Data\'s not found');
@@ -106,7 +106,7 @@ function sellProduct() {
 function createAccount() {
     var xhttp = new XMLHttpRequest();
     const formDatas = new URLSearchParams(new FormData(accountCreateForm)).toString();
-    xhttp.open("POST", "/user/account", true);
+    xhttp.open("POST", "../api/user", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(formDatas);
     xhttp.onreadystatechange = function() {
